@@ -33,15 +33,12 @@ class SnippetCreate(BaseModel):
 
 # 📌 Схема для отображения код-сниппета
 class SnippetResponse(BaseModel):
-    id: int
-    uuid: str
+    uuid: str  # 🔹 Теперь только UUID
     title: str
-    description: Optional[str] = None
+    description: Optional[str]
     code: str
     language: str
     created_at: datetime
     updated_at: datetime
     owner_id: int
 
-    class Config:
-        from_attributes = True

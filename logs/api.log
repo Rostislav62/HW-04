@@ -301,3 +301,168 @@ FROM snippets
 WHERE snippets.language = ? AND snippets.owner_id = ?
 2025-01-23 15:56:49,909 - INFO - [generated in 0.00855s] ('Python', 1)
 2025-01-23 15:56:49,912 - INFO - ROLLBACK
+2025-01-24 13:25:32,758 - INFO - BEGIN (implicit)
+2025-01-24 13:25:32,767 - INFO - SELECT users.id, users.username, users.email, users.password_hash, users.refresh_token, users.created_at 
+FROM users 
+WHERE users.email = ?
+2025-01-24 13:25:32,768 - INFO - [generated in 0.00056s] ('test@example.com',)
+2025-01-24 13:25:32,775 - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\rsmiglix\OneDrive - Intel Corporation\Documents\GitHub\snippet_api\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-01-24 13:25:33,148 - INFO - INSERT INTO users (username, email, password_hash, refresh_token, created_at) VALUES (?, ?, ?, ?, ?)
+2025-01-24 13:25:33,149 - INFO - [generated in 0.00106s] ('testuser', 'test@example.com', '$2b$12$BFa16LJxb8F41SummUw/oOHPyrqAY13XvQstSo/rikk89i0A0s0Im', None, '2025-01-24 13:25:33.148149')
+2025-01-24 13:25:33,155 - INFO - COMMIT
+2025-01-24 13:25:33,177 - INFO - BEGIN (implicit)
+2025-01-24 13:25:33,180 - INFO - SELECT users.id, users.username, users.email, users.password_hash, users.refresh_token, users.created_at 
+FROM users 
+WHERE users.id = ?
+2025-01-24 13:25:33,181 - INFO - [generated in 0.00067s] (1,)
+2025-01-24 13:25:33,184 - INFO - \u041d\u043e\u0432\u044b\u0439 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d: test@example.com
+2025-01-24 13:25:33,188 - INFO - ROLLBACK
+2025-01-24 13:26:02,634 - INFO - BEGIN (implicit)
+2025-01-24 13:26:02,634 - INFO - SELECT users.id, users.username, users.email, users.password_hash, users.refresh_token, users.created_at 
+FROM users 
+WHERE users.email = ?
+2025-01-24 13:26:02,635 - INFO - [cached since 29.87s ago] ('test@example.com',)
+2025-01-24 13:26:02,985 - INFO - UPDATE users SET refresh_token=? WHERE users.id = ?
+2025-01-24 13:26:02,986 - INFO - [generated in 0.00047s] ('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiZXhwIjoxNzM4MzI5OTYyfQ.NP6rNEnDPe-WI7yVcY64mnMQBSaNCaQPTWb_8-l5VU0', 1)
+2025-01-24 13:26:02,989 - INFO - COMMIT
+2025-01-24 13:26:03,007 - INFO - BEGIN (implicit)
+2025-01-24 13:26:03,008 - INFO - SELECT users.id, users.username, users.email, users.password_hash, users.refresh_token, users.created_at 
+FROM users 
+WHERE users.id = ?
+2025-01-24 13:26:03,009 - INFO - [cached since 29.83s ago] (1,)
+2025-01-24 13:26:03,011 - INFO - \u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u0432\u043e\u0448\u0451\u043b: test@example.com
+2025-01-24 13:26:03,012 - INFO - ROLLBACK
+2025-01-24 13:26:38,520 - INFO - BEGIN (implicit)
+2025-01-24 13:26:38,520 - INFO - SELECT users.id, users.username, users.email, users.password_hash, users.refresh_token, users.created_at 
+FROM users 
+WHERE users.email = ?
+2025-01-24 13:26:38,520 - INFO - [cached since 65.75s ago] ('test@example.com',)
+2025-01-24 13:26:38,528 - INFO - INSERT INTO snippets (uuid, title, description, code, language, created_at, updated_at, owner_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+2025-01-24 13:26:38,528 - INFO - [generated in 0.00078s] ('0ba79fbe-e129-4507-a17d-eb30076f0516', 'Hello World in Python', '\u041f\u0440\u043e\u0441\u0442\u043e\u0439 \u043a\u043e\u0434 \u043d\u0430 Python, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u0432\u044b\u0432\u043e\u0434\u0438\u0442 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435.', "print('Hello, World!')", 'Python', '2025-01-24 13:26:38.527200', '2025-01-24 13:26:38.527200', 1)
+2025-01-24 13:26:38,532 - INFO - COMMIT
+2025-01-24 13:26:38,550 - INFO - BEGIN (implicit)
+2025-01-24 13:26:38,551 - INFO - SELECT snippets.uuid, snippets.title, snippets.description, snippets.code, snippets.language, snippets.created_at, snippets.updated_at, snippets.owner_id 
+FROM snippets 
+WHERE snippets.uuid = ?
+2025-01-24 13:26:38,551 - INFO - [generated in 0.00063s] ('0ba79fbe-e129-4507-a17d-eb30076f0516',)
+2025-01-24 13:26:38,553 - INFO - \u0421\u043d\u0438\u043f\u043f\u0435\u0442 \u0441\u043e\u0437\u0434\u0430\u043d \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u043c test@example.com: Hello World in Python
+2025-01-24 13:26:38,554 - INFO - ROLLBACK
+2025-01-24 13:28:25,248 - INFO - BEGIN (implicit)
+2025-01-24 13:28:25,250 - INFO - SELECT users.id, users.username, users.email, users.password_hash, users.refresh_token, users.created_at 
+FROM users 
+WHERE users.email = ?
+2025-01-24 13:28:25,250 - INFO - [cached since 172.5s ago] ('test@example.com',)
+2025-01-24 13:28:25,253 - INFO - SELECT snippets.uuid, snippets.title, snippets.description, snippets.code, snippets.language, snippets.created_at, snippets.updated_at, snippets.owner_id 
+FROM snippets 
+WHERE snippets.uuid = ?
+2025-01-24 13:28:25,255 - INFO - [generated in 0.00078s] ('0ba79fbe-e129-4507-a17d-eb30076f0516',)
+2025-01-24 13:28:25,259 - INFO - UPDATE snippets SET title=?, description=?, code=?, language=?, updated_at=? WHERE snippets.uuid = ?
+2025-01-24 13:28:25,259 - INFO - [generated in 0.00061s] ('string', 'string', 'string', 'string', '2025-01-24 13:28:25.257266', '0ba79fbe-e129-4507-a17d-eb30076f0516')
+2025-01-24 13:28:25,262 - INFO - COMMIT
+2025-01-24 13:28:25,280 - INFO - BEGIN (implicit)
+2025-01-24 13:28:25,280 - INFO - SELECT snippets.uuid, snippets.title, snippets.description, snippets.code, snippets.language, snippets.created_at, snippets.updated_at, snippets.owner_id 
+FROM snippets 
+WHERE snippets.uuid = ?
+2025-01-24 13:28:25,281 - INFO - [cached since 106.7s ago] ('0ba79fbe-e129-4507-a17d-eb30076f0516',)
+2025-01-24 13:28:25,282 - INFO - \u0421\u043d\u0438\u043f\u043f\u0435\u0442 \u043e\u0431\u043d\u043e\u0432\u043b\u0451\u043d \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u043c test@example.com: string
+2025-01-24 13:28:25,282 - INFO - ROLLBACK
+2025-01-24 13:37:58,475 - INFO - BEGIN (implicit)
+2025-01-24 13:37:58,482 - INFO - SELECT users.id, users.username, users.email, users.password_hash, users.refresh_token, users.created_at 
+FROM users 
+WHERE users.email = ?
+2025-01-24 13:37:58,482 - INFO - [generated in 0.00058s] ('newuser@example.com',)
+2025-01-24 13:37:58,486 - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\rsmiglix\OneDrive - Intel Corporation\Documents\GitHub\snippet_api\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-01-24 13:37:58,841 - INFO - INSERT INTO users (username, email, password_hash, refresh_token, created_at) VALUES (?, ?, ?, ?, ?)
+2025-01-24 13:37:58,841 - INFO - [generated in 0.00092s] ('newuser', 'newuser@example.com', '$2b$12$6p/MIVa/l4wmvpuEe1dwVeZq8aCzNcNuIU/9fGaDmyXmwsnV.eFBy', None, '2025-01-24 13:37:58.841278')
+2025-01-24 13:37:58,846 - INFO - COMMIT
+2025-01-24 13:37:58,866 - INFO - BEGIN (implicit)
+2025-01-24 13:37:58,867 - INFO - SELECT users.id, users.username, users.email, users.password_hash, users.refresh_token, users.created_at 
+FROM users 
+WHERE users.id = ?
+2025-01-24 13:37:58,868 - INFO - [generated in 0.00058s] (2,)
+2025-01-24 13:37:58,869 - INFO - \u041d\u043e\u0432\u044b\u0439 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d: newuser@example.com
+2025-01-24 13:37:58,870 - INFO - ROLLBACK
+2025-01-24 13:38:10,935 - INFO - BEGIN (implicit)
+2025-01-24 13:38:10,936 - INFO - SELECT users.id, users.username, users.email, users.password_hash, users.refresh_token, users.created_at 
+FROM users 
+WHERE users.email = ?
+2025-01-24 13:38:10,936 - INFO - [cached since 12.45s ago] ('newuser@example.com',)
+2025-01-24 13:38:11,277 - INFO - UPDATE users SET refresh_token=? WHERE users.id = ?
+2025-01-24 13:38:11,278 - INFO - [generated in 0.00101s] ('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJuZXd1c2VyQGV4YW1wbGUuY29tIiwiZXhwIjoxNzM4MzMwNjkxfQ.D57_M1XKateYOMQjVEBdSCtzdDmJ7lskddELvnZeWWM', 2)
+2025-01-24 13:38:11,283 - INFO - COMMIT
+2025-01-24 13:38:11,300 - INFO - BEGIN (implicit)
+2025-01-24 13:38:11,301 - INFO - SELECT users.id, users.username, users.email, users.password_hash, users.refresh_token, users.created_at 
+FROM users 
+WHERE users.id = ?
+2025-01-24 13:38:11,302 - INFO - [cached since 12.43s ago] (2,)
+2025-01-24 13:38:11,304 - INFO - \u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u0432\u043e\u0448\u0451\u043b: newuser@example.com
+2025-01-24 13:38:11,304 - INFO - ROLLBACK
+2025-01-24 13:41:44,156 - INFO - BEGIN (implicit)
+2025-01-24 13:41:44,163 - INFO - SELECT users.id, users.username, users.email, users.password_hash, users.refresh_token, users.created_at 
+FROM users 
+WHERE users.email = ?
+2025-01-24 13:41:44,163 - INFO - [generated in 0.00057s] ('newuser@example.com',)
+2025-01-24 13:41:44,165 - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\rsmiglix\OneDrive - Intel Corporation\Documents\GitHub\snippet_api\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-01-24 13:41:44,510 - INFO - UPDATE users SET refresh_token=? WHERE users.id = ?
+2025-01-24 13:41:44,511 - INFO - [generated in 0.00063s] ('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJuZXd1c2VyQGV4YW1wbGUuY29tIiwiZXhwIjoxNzM4MzMwOTA0fQ.teupNenBay7WyrouJUocTPdXjMJkkIPLW162VU259hY', 2)
+2025-01-24 13:41:44,516 - INFO - COMMIT
+2025-01-24 13:41:44,536 - INFO - BEGIN (implicit)
+2025-01-24 13:41:44,537 - INFO - SELECT users.id, users.username, users.email, users.password_hash, users.refresh_token, users.created_at 
+FROM users 
+WHERE users.id = ?
+2025-01-24 13:41:44,538 - INFO - [generated in 0.00073s] (2,)
+2025-01-24 13:41:44,540 - INFO - \u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u0432\u043e\u0448\u0451\u043b: newuser@example.com
+2025-01-24 13:41:44,542 - INFO - ROLLBACK
+2025-01-24 13:43:50,409 - INFO - BEGIN (implicit)
+2025-01-24 13:43:50,410 - INFO - SELECT users.id, users.username, users.email, users.password_hash, users.refresh_token, users.created_at 
+FROM users 
+WHERE users.email = ?
+2025-01-24 13:43:50,410 - INFO - [cached since 126.2s ago] ('newuser@example.com',)
+2025-01-24 13:43:50,417 - INFO - INSERT INTO snippets (uuid, title, description, code, language, created_at, updated_at, owner_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+2025-01-24 13:43:50,418 - INFO - [generated in 0.00104s] ('28d76535-3eb6-4f46-8663-26d05b585812', 'Test Snippet', '\u042d\u0442\u043e\u0442 \u0442\u0435\u0441\u0442\u043e\u0432\u044b\u0439 \u0441\u043d\u0438\u043f\u043f\u0435\u0442 \u043d\u0443\u0436\u0435\u043d \u0434\u043b\u044f \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0438 \u0443\u0434\u0430\u043b\u0435\u043d\u0438\u044f', "print('\u0423\u0434\u0430\u043b\u0435\u043d\u0438\u0435 \u0442\u0435\u0441\u0442\u043e\u0432\u043e\u0433\u043e \u0441\u043d\u0438\u043f\u043f\u0435\u0442\u0430!')", 'Python', '2025-01-24 13:43:50.417011', '2025-01-24 13:43:50.417011', 2)
+2025-01-24 13:43:50,421 - INFO - COMMIT
+2025-01-24 13:43:50,440 - INFO - BEGIN (implicit)
+2025-01-24 13:43:50,441 - INFO - SELECT snippets.uuid, snippets.title, snippets.description, snippets.code, snippets.language, snippets.created_at, snippets.updated_at, snippets.owner_id 
+FROM snippets 
+WHERE snippets.uuid = ?
+2025-01-24 13:43:50,441 - INFO - [generated in 0.00045s] ('28d76535-3eb6-4f46-8663-26d05b585812',)
+2025-01-24 13:43:50,443 - INFO - \u0421\u043d\u0438\u043f\u043f\u0435\u0442 \u0441\u043e\u0437\u0434\u0430\u043d \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u043c newuser@example.com: Test Snippet
+2025-01-24 13:43:50,444 - INFO - ROLLBACK
+2025-01-24 13:44:44,515 - INFO - BEGIN (implicit)
+2025-01-24 13:44:44,516 - INFO - SELECT users.id, users.username, users.email, users.password_hash, users.refresh_token, users.created_at 
+FROM users 
+WHERE users.email = ?
+2025-01-24 13:44:44,516 - INFO - [cached since 180.4s ago] ('newuser@example.com',)
+2025-01-24 13:44:44,520 - INFO - SELECT snippets.uuid, snippets.title, snippets.description, snippets.code, snippets.language, snippets.created_at, snippets.updated_at, snippets.owner_id 
+FROM snippets 
+WHERE snippets.uuid = ?
+2025-01-24 13:44:44,521 - INFO - [generated in 0.00083s] ('28d76535-3eb6-4f46-8663-26d05b585812',)
+2025-01-24 13:44:44,524 - INFO - DELETE FROM snippets WHERE snippets.uuid = ?
+2025-01-24 13:44:44,524 - INFO - [generated in 0.00042s] ('28d76535-3eb6-4f46-8663-26d05b585812',)
+2025-01-24 13:44:44,527 - INFO - COMMIT
+2025-01-24 13:44:44,540 - INFO - \u0421\u043d\u0438\u043f\u043f\u0435\u0442 \u0443\u0434\u0430\u043b\u0451\u043d \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u043c newuser@example.com: Test Snippet
+2025-01-24 13:45:04,561 - INFO - BEGIN (implicit)
+2025-01-24 13:45:04,562 - INFO - SELECT users.id, users.username, users.email, users.password_hash, users.refresh_token, users.created_at 
+FROM users 
+WHERE users.email = ?
+2025-01-24 13:45:04,562 - INFO - [cached since 200.4s ago] ('newuser@example.com',)
+2025-01-24 13:45:04,564 - INFO - SELECT snippets.uuid, snippets.title, snippets.description, snippets.code, snippets.language, snippets.created_at, snippets.updated_at, snippets.owner_id 
+FROM snippets 
+WHERE snippets.uuid = ?
+2025-01-24 13:45:04,564 - INFO - [cached since 20.04s ago] ('28d76535-3eb6-4f46-8663-26d05b585812',)
+2025-01-24 13:45:04,565 - INFO - ROLLBACK

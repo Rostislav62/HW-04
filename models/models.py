@@ -4,8 +4,10 @@ from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Text
 from sqlalchemy.orm import relationship
 from datetime import datetime
 import uuid
-from db.database import Base
+from sqlalchemy.ext.declarative import declarative_base
 
+
+Base = declarative_base()
 
 # 📌 Модель пользователя
 class User(Base):
@@ -26,14 +28,16 @@ class User(Base):
 class Snippet(Base):
     __tablename__ = "snippets"
 
-    id = Column(Integer, primary_key=True, index=True)  # ✅ Индекс уже есть
-    uuid = Column(String, default=lambda: str(uuid.uuid4()), unique=True, index=True)  # ✅ Индекс уже есть
+    uuid = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()), unique=True, index=True)  # Теперь UUID — основной ключ
     title = Column(String, nullable=False)
     description = Column(Text, nullable=True)
     code = Column(Text, nullable=False)
-    language = Column(String, nullable=False, index=True)  # ✅ Добавлен индекс
+    language = Column(String, nullable=False, index=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    owner_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
 
-    owner_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)  # ✅ Добавлен индекс
     owner = relationship("User", back_populates="snippets")
+
+
+
